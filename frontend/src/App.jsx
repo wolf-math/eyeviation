@@ -1,10 +1,10 @@
-import react from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import NotFound from './pages/NotFound'
-import Home from './pages/Home'
+import Customize from './pages/Customize'
 import ProtectedRoute from './components/ProtectedRoute'
+import WeaponsList from './pages/WeaponsList'
 // import './App.css'
 
 function Logout() {
@@ -23,11 +23,17 @@ function App() {
       <Routes>
         <Route 
           path="/"
-          // most of the time Home would not be protected. 
-          // It's protected here for the demo.
           element={
             <ProtectedRoute>
-              <Home />
+              <WeaponsList />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path="/customize"
+          element={
+            <ProtectedRoute>
+              <Customize />
             </ProtectedRoute>
           }
         />
