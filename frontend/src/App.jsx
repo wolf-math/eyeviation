@@ -20,6 +20,8 @@ function RegisterAndLogout() {
 function App() {
   return (
     <BrowserRouter>
+    <div className='container'>
+
       <Routes>
         <Route 
           path="/"
@@ -28,7 +30,7 @@ function App() {
               <WeaponsList />
             </ProtectedRoute>
           }
-        />
+          />
         <Route 
           path="/customize"
           element={
@@ -36,12 +38,13 @@ function App() {
               <Customize />
             </ProtectedRoute>
           }
-        />
+          />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<RegisterAndLogout />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      </div>
     </BrowserRouter>
   )
 }

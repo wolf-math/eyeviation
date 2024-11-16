@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import api from '../api';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function CustomizeWeapon() {
   const [weapon, setWeapon] = useState({
@@ -22,8 +24,13 @@ export default function CustomizeWeapon() {
       ...prevState,
       [key]: e.target.value
     }))
-    console.log(weapon)
   };
+
+  const navigate = useNavigate();
+
+  const cancel = () => {
+    navigate('/');
+  }
 
   const saveWeapon = async (e) => {
     try {
@@ -31,6 +38,7 @@ export default function CustomizeWeapon() {
       const res = await api.post("/api/customize/", weapon)
       if (res.status === 201){
         alert("Weapon Saved")
+        navigate('/');
       } else {
         alert("That didn't work")
       }
@@ -123,6 +131,7 @@ export default function CustomizeWeapon() {
         </div>
       </div>
       <button onClick={saveWeapon}>Save</button>
+      <button onClick={cancel}>Cancel</button>
     </div>
   );
 }
