@@ -11,12 +11,12 @@ class WeaponListCreate(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        user = self.request.user
-        return Weapon.objects.filter(author=user)
+        current_user = self.request.user
+        return Weapon.objects.filter(user=current_user)
     
     def perform_create(self, serializer):
         if serializer.is_valid():
-            serializer.save(author=self.request.user)
+            serializer.save(user=self.request.user)
         else:
             print(serializer.errors)
 
@@ -25,8 +25,8 @@ class WeaponDelete(generics.DestroyAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        user = self.request.user
-        return Weapon.objects.filter(author=user)
+        current_user = self.request.user
+        return Weapon.objects.filter(user=current_user)
 
 
 class CreateUserView(generics.CreateAPIView):

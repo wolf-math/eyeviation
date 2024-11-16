@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import api from '../api';
 
 export default function CustomizeWeapon() {
   const [weapon, setWeapon] = useState({
@@ -23,6 +24,20 @@ export default function CustomizeWeapon() {
     }))
     console.log(weapon)
   };
+
+  const saveWeapon = async (e) => {
+    try {
+      e.preventDefault()
+      const res = await api.post("/api/customize/", weapon)
+      if (res.status === 201){
+        alert("Weapon Saved")
+      } else {
+        alert("That didn't work")
+      }
+    } catch (err) {
+      alert(`Error: ${err}`);
+    }
+  }
 
   return (
     <div className="customize">
@@ -106,8 +121,8 @@ export default function CustomizeWeapon() {
             </label>
           ))}
         </div>
-
       </div>
+      <button onClick={saveWeapon}>Save</button>
     </div>
   );
 }

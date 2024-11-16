@@ -18,4 +18,4 @@ class WeaponSerializer(serializers.ModelSerializer):
     class Meta:
         model = Weapon
         fields = ["id", "base", "sight", "laser", "grip", "barrel"]
-        extra_kwargs = {"author": {"read_only": True}}
+        extra_kwargs = {"user": {"read_only": True}}
