@@ -46,7 +46,7 @@ export default function CustomizeWeapon() {
     }
     try {
       const res = fromState 
-        ? await api.put(`/api/customize/update/${weapon.id}/`, weapon) 
+        ? await api.put(`/api/customize/${weapon.id}/`, weapon) 
         : await api.post("/api/customize/", weapon)
 
 
@@ -63,7 +63,7 @@ export default function CustomizeWeapon() {
 
   const deleteWeapon = async () => {
     try {
-      const res = await api.delete(`/api/customize/delete/${weapon.id}/`);
+      const res = await api.delete(`/api/customize/${weapon.id}/`);
       if (res.status === 204) {
         alert("Weapon deleted successfully");
         navigate('/');
@@ -84,7 +84,7 @@ export default function CustomizeWeapon() {
     setWeapon(updatedWeapon);
     try {
       const res = fromState 
-        ? await api.put(`/api/customize/update/${updatedWeapon.id}/`, updatedWeapon) 
+        ? await api.put(`/api/customize/${updatedWeapon.id}/`, updatedWeapon) 
         : await api.post("/api/customize/", updatedWeapon)
 
       if (200 < res.status <299){
