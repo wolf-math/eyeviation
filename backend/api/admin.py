@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Weapon
 
-# Register your models here.
+@admin.register(Weapon)
+class NoteAdmin(admin.ModelAdmin):
+    list_display = ('name', 'base', 'sight', 'laser', 'grip', 'barrel', 'status')

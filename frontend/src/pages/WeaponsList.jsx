@@ -17,20 +17,6 @@ export default function WeaponsList() {
     }
   }, []);
 
-  const deleteWeapon = async (id) => {
-    try {
-      const res = await api.delete(`/api/customize/delete/${id}/`);
-      if (res.status === 204) {
-        alert("Weapon deleted successfully");
-        fetchWeapons();
-      } else {
-        alert("Failed to delete weapon");
-      }
-    } catch (err) {
-      alert(`Error: ${err}`);
-    }
-  };
-
   useEffect(() => {
     fetchWeapons();
   }, [fetchWeapons]);
@@ -41,7 +27,7 @@ export default function WeaponsList() {
       <div className="weapons-container" style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
         {weapons.length > 0 ? (
           weapons.map((weapon) => (
-            <WeaponCard key={weapon.id} weapon={weapon} onDelete={deleteWeapon} />
+            <WeaponCard key={weapon.id} weapon={weapon} />
           ))
         ) : (
           <h2>No weapons found</h2>
@@ -53,6 +39,7 @@ export default function WeaponsList() {
         </div>
         </Link>
       </div>
+      <Link to="/logout" ><button className="btn btn-primary" style={{position: "fixed", bottom: 20}}>Logout</button></Link>
     </div>
   );
 }
