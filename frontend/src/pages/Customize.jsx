@@ -89,7 +89,6 @@ export default function CustomizeWeapon() {
 
       if (200 < res.status <299){
         alert("Weapon Sent to Printer")
-        console.log(updatedWeapon)
         navigate('/');
       } else {
         alert("That didn't work")

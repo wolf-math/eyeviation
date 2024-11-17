@@ -22,7 +22,7 @@ export default function WeaponCard ({weapon}) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    // not great, doing prop drilling
+    // not great, doing a little prop drilling
     navigate('/customize', { state: { weapon } });
   }
 
