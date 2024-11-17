@@ -26,5 +26,5 @@ This is the home assignment for Eyeviation. All instructions are writen for Linu
 
 1) create a user
 2) login
-3) view your weapon inventory
-4) click on "customize new weapon" to create new weapon
+3) create new weapon or view your weapon inventory
+4) click on a weapon to update or print
