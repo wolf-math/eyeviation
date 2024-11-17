@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 import api from "../api";
 import { useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
@@ -61,6 +62,7 @@ function Form({ route, method }) {
         {name}
       </button>
     </form>
+    {method === "login" ? <p>New user? <Link to="/register">Register</Link></p> : <p>Already a user? <Link to="/login">login</Link></p>}
     </>
   );
 }
